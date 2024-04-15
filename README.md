@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [x] Commit: `Implement publish function in Program service and Program controller.`
+    -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -92,3 +92,10 @@ Penggunaan DashMap dalam kasus ini menurut saya lebih baik, karena implementasi 
 3. **Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects. </br>**
 Saya baru mencari tahu lebih banyak tentang postman ketika semester 3 yaitu pada mata kuliah PBP. Postman ini berguna untuk API Testing terhadap aplikasi saya dan menampilkan responya dalam berbagai format, seperti JSON atau XML. Fitur yang menarik dari Postman sendiri adalah menyimpan dan mengelola request yang sering digunakan dalam koleksi, sehingga memudahkan untuk pengujian berulang dan juga seperti yang sudah disebutkan bahwa akan mengembalikan response dengan format yang beragam. Saya akan menggunakan Postman pada proyek kelompok saya untuk menguji dan mengelola API yang digunakan dalam proyek kelompok saya. 
 #### Reflection Publisher-3
+1. **Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?** </br>
+Observer pattern yang digunakan pada case tutorial ini adalah push model, ini bisa dilihat dari notify function publisher yang mengiterasi seluruh subscriber agar mendapat update terbaru.
+2. **What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)**</br>
+Jika kita menggunakan pull model, kelebihanya Subscriber memiliki kontrol atas kapan akan ambil data dari publisher. Sehingga subscriber akan request update ketika dibutuhkan. Namun kekurangannya pengiriman notificationnya tidak real time dan subscriber harus aktif meminta data dari publisher yang membaut penundaan dalam pembaruan data jika penerima tidak meminta data cukup sering atau jika tidak aktid selama periode waktu tertentu.
+3. **Explain what will happen to the program if we decide to not use multi-threading in the notification process.**</br>
+   Jika kita memutuskan untuk tidak menggunakan multi-threading dalam proses notifikasi, maka proses notifikasi akan dilakukan secara synchronous. Hal ini berarti bahwa setiap kali notifikasi harus dikirim, program akan menunggu hingga notifikasi selesai dikirim ke semua subscriber sebelum melanjutkan eksekusi berikutnya. Akibatnya, proses notifikasi dapat menjadi lambat, terutama jika jumlah subscriber yang besar atau jika terdapat keterlambatan dalam koneksi ke subscriber tertentu. Ini juga dapat menyebabkan penundaan dalam respons sistem secara keseluruhan, karena proses notifikasi memblokir eksekusi program lainnya. Dengan menggunakan multi-threading, program dapat mengirim notifikasi ke subscriber secara bersamaan, meningkatkan efisiensi dan responsivitas sistem secara keseluruhan.
+
